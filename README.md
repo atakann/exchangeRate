@@ -63,7 +63,7 @@ This Laravel-based project provides an API for registering users, logging in, an
 The application is configured to fetch and update exchange rates every 15 minutes using Laravel's scheduler.
 
 In `app\Console\Kernel.php`:
-\```php
+```php
 protected function schedule(Schedule $schedule)
 {
     $schedule->call(function () {
@@ -71,7 +71,7 @@ protected function schedule(Schedule $schedule)
         $service->fetchAndUpdateRates();
     })->everyFifteenMinutes();
 }
-\```
+```
 
 
 ## Logging
