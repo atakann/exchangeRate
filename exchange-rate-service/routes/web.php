@@ -23,8 +23,3 @@ Route::get('/test-api', function () {
     $service = new ExchangeRateService();
     return $service->fetchTestRates(); // This will be a new method in your service for testing
 });
-
-Route::get('/dispatch-exchange-rates', function () {
-    FetchExchangeRates::dispatch();
-    return 'Job dispatched!';
-});
