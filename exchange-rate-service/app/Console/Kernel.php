@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Services\ExchangeRateService; // Import the ExchangeRateService
 
 class Kernel extends ConsoleKernel
 {
@@ -15,7 +16,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // Schedule to run the exchange rate update every 15 minutes
+        $schedule->call(function () {
+            $service = new ExchangeRateService();
+            $service->fetchAndUpdateRates();
+        })->everyMinute();
     }
 
     /**
