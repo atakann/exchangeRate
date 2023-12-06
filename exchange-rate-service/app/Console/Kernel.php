@@ -17,10 +17,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // Schedule to run the exchange rate update every 15 minutes
-        $schedule->call(function () {
-            $service = new ExchangeRateService();
-            $service->fetchAndUpdateRates();
-        })->everyMinute();
+        // $schedule->call(function () {
+        //     $service = new ExchangeRateService();
+        //     $service->fetchAndUpdateRates();
+        // })->everyMinute();
+        $schedule->command('exchange-rates:fetch')->everyFifteenMinutes();
     }
 
     /**

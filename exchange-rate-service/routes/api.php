@@ -24,3 +24,6 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware(['auth:sanctum', 'log.exchange.rates'])->get('/exchange-rates', [ExchangeRateController::class, 'index']);
+
+Route::middleware('auth:sanctum')->get('/fetch-rates', [ExchangeRateController::class, 'fetchAndStoreRates']);
+
